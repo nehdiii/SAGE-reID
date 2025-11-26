@@ -116,7 +116,7 @@ Using this script, you can achieve 44.1 mAP & 69.8 R1 on msmt17 test set. There 
 
 ## Model Zoo
 
-### Pre-trained models 
+### Pre-trained Models 
 
 | dataset |                          Resources                           |  mAP  |  R1  |
 | :-----: | :----------------------------------------------------------: | :---: | :--: |
@@ -125,7 +125,7 @@ Using this script, you can achieve 44.1 mAP & 69.8 R1 on msmt17 test set. There 
 | CUHK03 | :----------------------------------------------------------: | :---: | :--: |
 
 
-### Adapted Modles
+### Adapted Models
 
 | dataset |                          Resources                           |  mAP  |  R1  |
 | :-----: | :----------------------------------------------------------: | :---: | :--: |
