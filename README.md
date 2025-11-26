@@ -84,7 +84,6 @@ In this documentation, we will primarily focus on pre-training, adaptation, and 
 
 :floppy_disk: ​Similar to many methods in the literature, we use the ViT-B/16 (vit_base_patch16_224) model initialized with ImageNet-1k pre-trained weights. Various ViT model variants are also available in [vit.py](../SAGE_reID/models/vit.py).
 
-- Deformable DETR: [[official repo](https://github.com/fundamentalvision/Deformable-DETR)] [[our repo](https://github.com/MCG-NJU/MOTIP/releases/download/v0.1/r50_deformable_detr_coco.pth)]
 
 ### Pre-train ViT-B/16 on Specific Source Datasets
 
@@ -116,7 +115,50 @@ sh scripts/merging/adapt_market1501_cuhk03_dukemtmc_to_msmt17.sh
 Using this script, you can achieve 44.1 mAP & 69.8 R1 on msmt17 test set. There is a relatively high instability (~ 0.8) 
 ## :: Model Zoo
 
-finish this part !!!
+## Model Zoo
+
+## MOTIP
+
+### DanceTrack
+
+| Method | Extra Data | Traj Aug |                          Resources                           | HOTA | DetA | AssA |
+| :----: | :--------: | :------: | :----------------------------------------------------------: | :--: | :--: | :--: |
+| MOTIP  |  ***no***  |  *yes*   | [pre-train](https://github.com/MCG-NJU/MOTIP/releases/download/v0.1/r50_deformable_detr_coco_dancetrack.pth) \| [config](../configs/r50_deformable_detr_motip_dancetrack.yaml) \| [checkpoint](https://github.com/MCG-NJU/MOTIP/releases/download/v0.1/r50_deformable_detr_motip_dancetrack.pth) | 69.6 | 80.4 | 60.4 |
+| MOTIP  |  ***no***  |   *no*   | [pre-train](https://github.com/MCG-NJU/MOTIP/releases/download/v0.1/r50_deformable_detr_coco_dancetrack.pth) \| [config](../configs/r50_deformable_detr_motip_dancetrack_without_trajectory_augmentation.yaml) \| [checkpoint](https://github.com/MCG-NJU/MOTIP/releases/download/v0.2/r50_deformable_detr_motip_dancetrack_without_trajectory_augmentation.pth) | 65.2 | 80.4 | 53.1 |
+
+### SportsMOT
+
+| Method | Extra Data | Traj Aug |                          Resources                           | HOTA | DetA | AssA |
+| :----: | :--------: | :------: | :----------------------------------------------------------: | :--: | :--: | :--: |
+| MOTIP  |  ***no***  |  *yes*   | [pre-train](https://github.com/MCG-NJU/MOTIP/releases/download/v0.1/r50_deformable_detr_coco_sportsmot.pth) \| [config](../configs/r50_deformable_detr_motip_sportsmot.yaml) \| [checkpoint](https://github.com/MCG-NJU/MOTIP/releases/download/v0.1/r50_deformable_detr_motip_sportsmot.pth) | 72.6 | 83.5 | 63.2 |
+| MOTIP  |  ***no***  |   *no*   | [pre-train](https://github.com/MCG-NJU/MOTIP/releases/download/v0.1/r50_deformable_detr_coco_sportsmot.pth) \| [config](../configs/r50_deformable_detr_motip_sportsmot_without_trajectory_augmentation.yaml) \| [checkpoint](https://github.com/MCG-NJU/MOTIP/releases/download/v0.2/r50_deformable_detr_motip_sportsmot_without_trajectory_augmentation.pth) | 70.9 | 83.7 | 60.1 |
+
+### BFT
+
+| Method | Extra Data | Traj Aug |                          Resources                           | HOTA | DetA | AssA |
+| :----: | :--------: | :------: | :----------------------------------------------------------: | :--: | :--: | :--: |
+| MOTIP  |  ***no***  |  *yes*   | [pre-train](https://github.com/MCG-NJU/MOTIP/releases/download/v0.1/r50_deformable_detr_coco_bft.pth) \| [config](../configs/r50_deformable_detr_motip_bft.yaml) \| [checkpoint](https://github.com/MCG-NJU/MOTIP/releases/download/v0.1/r50_deformable_detr_motip_bft.pth) | 70.5 | 69.6 | 71.8 |
+| MOTIP  |  ***no***  |   *no*   | [pre-train](https://github.com/MCG-NJU/MOTIP/releases/download/v0.1/r50_deformable_detr_coco_bft.pth) \| [config](../configs/r50_deformable_detr_motip_bft_without_trajectory_augmentation.yaml) \| [checkpoint](https://github.com/MCG-NJU/MOTIP/releases/download/v0.2/r50_deformable_detr_motip_bft_without_trajectory_augmentation.pth) | 71.3 | 69.2 | 73.7 |
+
+***NOTE:***
+
+1. *Traj Aug* is an abbreviation for *Trajectory Augmentation* in the paper.
+2. You could also load previous checkpoints for inference from [prev-engine branch](https://github.com/MCG-NJU/MOTIP/tree/prev-engine), using runtime parameter `--use-previous-checkpoint True`. You may need to pass additional parameters to bridge the difference in the experimental setups. Typically, `--rel-pe-length` and `--miss-tolerance`.
+3. We present some experimental results not included in the paper, which we plan to discuss in the extended version of the article :soon:.
+4. You could also download our well-trained weights from [Baidu disk :cloud:](https://pan.baidu.com/s/1sy4Vv-inQN4U-GlC5NjISQ?pwd=0042).
+
+## DETR
+
+You can directly download the pre-trained DETR weights used in our experiment here **(recommended)**. Or you can choose to follow the [guidance](./GET_STARTED.md) to perform pre-training yourself.
+
+|             Model Name              | Target Dataset | Extra Data |                          Resources                           |
+| :---------------------------------: | :------------: | :--------: | :----------------------------------------------------------: |
+|      r50_deformable_detr_coco       |      COCO      |  ***no***  | [checkpoint](https://github.com/MCG-NJU/MOTIP/releases/download/v0.1/r50_deformable_detr_coco.pth) |
+| r50_deformable_detr_coco_dancetrack |   DanceTrack   |  ***no***  | [config](../configs/pretrain_r50_deformable_detr_dancetrack.yaml) \| [checkpoint](https://github.com/MCG-NJU/MOTIP/releases/download/v0.1/r50_deformable_detr_coco_dancetrack.pth) |
+| r50_deformable_detr_coco_sportsmot  |   SportsMOT    |  ***no***  | [config](../configs/pretrain_r50_deformable_detr_sportsmot.yaml) \| [checkpoint](https://github.com/MCG-NJU/MOTIP/releases/download/v0.1/r50_deformable_detr_coco_sportsmot.pth) |
+|    r50_deformable_detr_coco_bft     |      BFT       |  ***no***  | [config](../configs/pretrain_r50_deformable_detr_bft.yaml) \| [checkpoint](https://github.com/MCG-NJU/MOTIP/releases/download/v0.1/r50_deformable_detr_coco_bft.pth) |
+
+
 
 ## :bouquet: Acknowledgements
 
