@@ -114,34 +114,6 @@ sh scripts/merging/adapt_market1501_cuhk03_dukemtmc_to_msmt17.sh
 ```
 Using this script, you can achieve 44.1 mAP & 69.8 R1 on msmt17 test set. There is a relatively high instability (~ 0.8) 
 
-## Model Zoo
-
-### Pre-trained Models 
-
-| dataset |                          Resources                           |  mAP  |  R1  |
-| :-----: | :----------------------------------------------------------: | :---: | :--: |
-| Market1501 | :----------------------------------------------------------: | :---: | :--: |
-| DukeMTMC-reID | :----------------------------------------------------------: | :---: | :--: |
-| CUHK03 | :----------------------------------------------------------: | :---: | :--: |
-
-
-### Adapted Models
-
-| dataset |                          Resources                           |  mAP  |  R1  |
-| :-----: | :----------------------------------------------------------: | :---: | :--: |
-| Market1501 to msmt17| :----------------------------------------------------------: | :---: | :--: |
-| DukeMTMC-reID to msmt17 | :----------------------------------------------------------: | :---: | :--: |
-| CUHK03 to msmt17 | :----------------------------------------------------------: | :---: | :--: |
-
-### Low-Rank Merging 
-
-| dataset |                          Resources                           |  mAP  |  R1  |
-| :-----: | :----------------------------------------------------------: | :---: | :--: |
-| Market1501 & DukeMTMC-reID & CUHK03  to msmt17| :----------------------------------------------------------: | :---: | :--: |
-
-
-
-
 ## :bouquet: Acknowledgements
 
 This project is built upon [UDAStrongBaseline](https://github.com/zkcys001/UDAStrongBaseline), [LoRA](https://github.com/microsoft/LoRA) .
